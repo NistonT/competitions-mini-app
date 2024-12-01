@@ -20,16 +20,18 @@ function App() {
 	useEffect(() => {
 		if (lastJsonMessage === null) return;
 
-		switch (lastJsonMessage.event) {
-			case "USERS:GET_ME:RESULT":
-				console.log(lastJsonMessage.data);
+		if (lastJsonMessage.event === "USERS:GET_ME:RESULT") {
+			console.log(lastJsonMessage.data);
+		} else {
 		}
 	}, [lastJsonMessage]);
+
+	// let message = lastJsonMessage.data;
 
 	return (
 		<>
 			{tg.initDataUnsafe.user?.username}
-			{/* <QRCode value={} /> */}
+			{lastJsonMessage.event}
 		</>
 	);
 }
