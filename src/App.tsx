@@ -31,7 +31,12 @@ function App() {
 
 	// let message = lastJsonMessage.data;
 
-	return <>{username}</>;
+	return (
+		<>
+			{username}
+			{encodeURIComponent(initData)}
+		</>
+	);
 }
 
 export default App;
