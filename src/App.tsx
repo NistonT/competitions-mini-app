@@ -31,12 +31,7 @@ function App() {
 
 	// let message = lastJsonMessage.data;
 
-	return (
-		<>
-			{username}
-			{encodeURIComponent(initData).split(" ")}
-		</>
-	);
+	return <>{username}</>;
 }
 
 export default App;
