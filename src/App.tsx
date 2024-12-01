@@ -7,7 +7,7 @@ const username = tg.initDataUnsafe.user?.username || "USERNAME_TG";
 
 function App() {
 	const TOKEN = import.meta.env.VITE_TOKEN;
-	const initData = tg.initData;
+	const initData = tg.initData || 123;
 
 	const { lastJsonMessage, sendJsonMessage } = useWebSocket(
 		`wss://competitions.webository.ru/connect_user?token=${encodeURIComponent(
@@ -34,7 +34,7 @@ function App() {
 	return (
 		<>
 			{username}
-			{encodeURIComponent(initData)}
+			{encodeURIComponent(initData).split(" ")}
 		</>
 	);
 }
