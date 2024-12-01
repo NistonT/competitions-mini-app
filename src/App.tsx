@@ -3,13 +3,16 @@ import { useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 
 const tg = window.Telegram.WebApp;
+const username = tg.initDataUnsafe.user?.username || "USERNAME_TG";
 
 function App() {
-	const TOKEN = "ABCD";
-	// const initData = tg.initData;
+	const TOKEN = import.meta.env.VITE_TOKEN;
+	const initData = tg.initData;
 
 	const { lastJsonMessage, sendJsonMessage } = useWebSocket(
-		`wss://competitions.webository.ru/connect_user?token=${TOKEN}`
+		`wss://competitions.webository.ru/connect_user?token=${encodeURIComponent(
+			initData
+		)}`
 	);
 
 	sendJsonMessage({
@@ -28,12 +31,7 @@ function App() {
 
 	// let message = lastJsonMessage.data;
 
-	return (
-		<>
-			{tg.initDataUnsafe.user?.username}
-			{lastJsonMessage.event}
-		</>
-	);
+	return <>{username}</>;
 }
 
 export default App;
